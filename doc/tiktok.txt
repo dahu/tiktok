@@ -1,0 +1,45 @@
+*tiktok.txt*	For Vim version 7.3	Last change: 2012-11-04
+
+
+			VIM REFERENCE MANUAL	by Barry Arthur
+
+
+Help on using tiktok                                                 *tiktok*
+
+1. TikTok Timer Object			|tiktok-timer|
+2. Methods				|tiktok-methods|
+3. Tickler				|tiktok-tickler|
+
+==============================================================================
+ 1. TIKTOK TIMER OBJECT                                        *tiktok-timer*
+
+TikTok provides a simple asynchronous timer object for Vim. It relies on an
+external |tiktok-tickler| process that calls the +tick()+ method of the timer
+periodically.
+
+==============================================================================
+ 2. Methods                                                  *tiktok-methods*
+
+TikTok
+
+* register  adds FUNCTION to list of responders to tick callback
+* enable    enables FUNCTION again if it was disabled
+* disable   disables FUNCTION from responding to tick callback
+* start     enables timer to respond to tick callbacks
+* stop      disables timer
+* toggle    switch an enabled timer to disabled and vice versa
+* tick      callback from |tiktok-tickler|. Runs all enabled
+            registered functions.
+
+==============================================================================
+ 3. Tickler                                                  *tiktok-tickler*
+
+The tickler is an external process that periodically calls the +tick()+ method
+of the target timer object. Most simply, this can be a shell loop:
+>
+ while [ ! `vim --servername T --remote-expr "timer.tick()" 2>/dev/null` ]; do
+   sleep 1
+ done
+<
+
+ vim:tw=78:ts=8:ft=help:norl:

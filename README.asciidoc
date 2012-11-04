@@ -1,0 +1,17 @@
+TikTok
+------
+
+__Vim on the clock, but the party don't stop__
+
+TikTok provides a simple asynchronous timer object for VimL.
+
+* tiktok#timer() returns a timer object with methods:
+** ++register++ -- adds FUNCTION to list of responders to ++tick++
+   callback
+** ++enable++ -- enables FUNCTION again if it was ++disable++d
+** ++disable++ -- disables FUNCTION from responding to ++tick++ callback
+** ++start++ -- enables timer to respond to ++tick++ callbacks
+** ++stop++ -- disables timer
+** ++toggle++ -- switch an enabled timer to disabled and vice versa
+** ++tick++ -- callback from _tickler_. Runs all enabled registered
+   functions.
