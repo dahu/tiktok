@@ -2,6 +2,7 @@
 # tiktok - periodic tickler for Vim tiktok#timer object
 # Barry Arthur   Nov 2012
 
+echo $$
 while [ ! `vim --servername $1 --remote-expr "$2" 2>/dev/null` ]; do
   sleep 1
 done
